@@ -1,0 +1,2 @@
+#les jours de la semaine
+semaine = [" lundi " , " mardi " , " mercredi " , " jeudi " , " vendredi " , " samedi " , " dimanche"]

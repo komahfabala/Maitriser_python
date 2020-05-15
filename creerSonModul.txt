@@ -1,0 +1,12 @@
+#creerSonModul
+
+Avec Mac OS X et Linux, il faut taper la commande suivante depuis un shell Bash pour modifier la variable d'environnement PYTHONPATH :
+export PYTHONPATH=$PYTHONPATH:/chemin/vers/mon/super/module
+
+Avec Windows, mais depuis un shell PowerShell, il faut taper la commande suivante :
+$env:PYTHONPATH += ";C:\chemin\vers\mon\super\module"
+
+Une fois cette manipulation effectuée, vous pouvez contrôler que le chemin vers le répertoire contenant vos modules a bien été ajouté à la variable d'environnement PYTHONPATH :
+
+    sous Mac OS X et Linux : echo $PYTHONPATH
+    sous Windows : echo $env:PYTHONPATH
