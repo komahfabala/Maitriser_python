@@ -1,3 +1,5 @@
+import time
+from datetime import date
 class Client(object) :
     """
         defint une classe client avec les attributs :
@@ -88,10 +90,18 @@ class Compte(Client) :
             credite un compte a partir d'un compte passé en parametre 
             et la somme a debite
         """
-        print(" virement a été effectué sur le compte {}".format(self.getNumero_compte()))
-        self.setSolde(self.getSolde() + valeure)
+        
         print(" la somme de {} a été debité sur le compte {}".format(valeure,compte_debite.getNumero_compte()))
         compte_debite.setSolde(compte_debite.getSolde() - valeure)
+        print("virement en cours ........")
+        time.sleep(20)
+        #temps = time.localtime()
+        named_tuple = time.localtime() # get struct_time
+        time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
+        print(" virement a été effectué sur le compte {} aujourd'hui le {}"\
+            .format(self.getNumero_compte() ,time_string))
+        self.setSolde(self.getSolde() + valeure)
+        
     #---------------------debite un compte---------------------------------------------------------------
     def debite_compte(self,valeur) :
         """
@@ -122,7 +132,7 @@ class Compteur(Compte) :
             Compteur.compte_objet +=1
 #------------------mon programme principale----------------------------------------------------------
 if __name__ == "__main__":
-    dict={}
+    """ dict={}
     print("Bienvenue a la banque de France \n")
     print("Que voulez-vous faire ? \n")
     bouton = input("choisissez une option <O-ouvertuere_compte> <C-consulter_compte> <V-virement>\n")
@@ -142,7 +152,7 @@ if __name__ == "__main__":
     else:
         print(" aurevoir")
     
-    
+    """
     
     
     
