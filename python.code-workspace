@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../python"
+		},
+		{
+			"path": "../../DjangoDeuxStyle"
+		},
+		{
+			"name": "Maitriser_python",
+			"path": "../../Maitriser_python"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
