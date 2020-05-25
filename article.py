@@ -99,7 +99,7 @@ if __name__ == "__main__":
         print(" Que voulez vous faire? <8-quitter> <autre-continuer> ")
         boutton = int(input("choisissez un chiffre entre 1 et 8 \n"))
         if boutton == 1:
-            print("la recherche d'un article par reference:\n")
+            print("la recherche d'un article par reference.....:\n")
             rhr= int(input("donnez la reference de l'article:\n"))
             for x in range(len(ma_list)):
                 if ma_list[x].recherche_article(rhr) == True :
