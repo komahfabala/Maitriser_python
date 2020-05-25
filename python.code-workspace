@@ -12,6 +12,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../../Maitriser_python/Maitriser_python"
 		}
 	],
 	"settings": {
