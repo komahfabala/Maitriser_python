@@ -138,9 +138,9 @@ if __name__ == "__main__":
     elif bouton == 'Q':
         pass
     elif bouton == 'A':
-        pass
+         print("A")
     else:
-        pass
+        print(" aurevoir")
     
     
     
