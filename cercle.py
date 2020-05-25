@@ -79,10 +79,9 @@ class Moncercle(Point) :
         if dists <= float(self.un_rayon) :
             return True
         return False
-
-        
 #----------le programme principale---------------------------------------------------------------
 if __name__ == "__main__":
+    print("le menu de l'application")
     print('donnez un votre abscisse :') 
     xx= input()
     print('donnez vortre ordonne :')
