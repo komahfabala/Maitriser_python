@@ -36,6 +36,9 @@ Travail à faire:
         Une méthode permettant de Débiter() le compte, prenant une somme et un compte bancaire en paramètres, débitant le compte et créditant le compte passé en paramètres
         Une méthode qui permet d’afficher le résumé d’un compte.
         Une méthode qui permet d’afficher le nombre des comptes crées.
+        une methode qui permet de rechercher un compte a partir en donnant son nom en paramètre.
+        une methode qui permet de rechercher un compte en donnant son numero en paramètre.
+    Créer une classe compteur d'objet qui permet de compter tous les objets instancier dans l'application.
     Créer un programme de test pour la classe Compte.
 le projet Cercle en python:
 ==========================
