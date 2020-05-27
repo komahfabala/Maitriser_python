@@ -59,17 +59,17 @@ class Compte(Client) :
         - son propriétaire 
     """
     #--------------constructeur----------------------------------------------------------------------
-    
+    #numero_compte=0
     def __init__(self,solde,proprietaire) :
         """
             un compte se definit par son solde et son proprietaire
         """
-        global number_compte
+        #global number_compte
         super().__init__(proprietaire.getCin(),proprietaire.getNon()
                         ,proprietaire.getPrenom(),proprietaire.getTel())
         self.__solde =solde
         nobject = Compteur()
-        self.__number_compte = nobject.compte_objet 
+        self.__number_compte = bin(nobject.compte_objet) #numero de compte a convertir en binaire 
     #-------------------accesseurs et mutateur-------------------------------------------------------
     def getSolde(self):
         return self.__solde
@@ -98,7 +98,7 @@ class Compte(Client) :
         #temps = time.localtime()
         named_tuple = time.localtime() # get struct_time
         time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
-        print(" virement a été effectué sur le compte {} aujourd'hui le {}"\
+        print(" virement a été effectué sur le compte numero {} aujourd'hui le {}"\
             .format(self.getNumero_compte() ,time_string))
         self.setSolde(self.getSolde() + valeure)
         
@@ -124,6 +124,15 @@ class Compte(Client) :
         msg = "Numero de compte: {}\n solde: {}€\n Proprietaire du compte:\n CIN: {}\n nom: {}\n prenom: {}\n tel: {}\n adresse: {}\n"
         return msg.format(self.__number_compte,self.__solde , self.getCin()
                             , self.getNon(), self.getPrenom(),self.getTel(), self.getMail()) 
+    #--------------------afficher un compte connaissant le nom------------------------------------------
+    def rechercher_compte_par_nom(self,nom) :
+        if self.getNon == nom :
+            print(self)
+        else:
+            print("le compte n'existe pas ") 
+    def rechercher_compte_par_numeroCompte(self,num) :
+        if self.getNumero_compte == num:
+            return self
 #-----------------------------------classe compte--------------------------------------------------------
 class Compteur(Compte) :
       compte_objet = 0
@@ -132,36 +141,55 @@ class Compteur(Compte) :
             Compteur.compte_objet +=1
 #------------------mon programme principale----------------------------------------------------------
 if __name__ == "__main__":
-    """ dict={}
-    print("Bienvenue a la banque de France \n")
+    base_des_comptes={}# une listes des comptes temporaire
+    liste_des_comptes = [] #un dictionnaire pour stocker tous les comptes definitivement
+    print("Bienvenue a la banque de Fabala \n")
     print("Que voulez-vous faire ? \n")
-    bouton = input("choisissez une option <O-ouvertuere_compte> <C-consulter_compte> <V-virement>\n")
-    if bouton == 'O':
-        cc=int(input("donnez le CIN: "))
-        nn=input("donnez le NOM: ")
-        pp=input("donnez le Prenom: ")
-        tt=int(input("donnez le numero de telephone: "))
-    elif bouton == 'C':
-        pass
-    elif bouton == 'V':
-        pass
-    elif bouton == 'Q':
-        pass
-    elif bouton == 'A':
-         print("A")
-    else:
-        print(" aurevoir")
-    
-    """
-    
-    
-    
-    
-    c = Client("EE1111","komah" ,"mohamed", 19876543)
-    c1 =Client("EE1911","komah" ,"amed", 19876544)
-    mn_cmpte = Compte(10000,c)
-    mn_compte = Compte(2000000,c1)
-    mn_compte.credite_compte(3456)
-    mn_cmpte.virement_entre_compte(30,mn_compte)
-    print(mn_cmpte)
-    print(mn_compte)
+    bouton = input("choisissez une option <O-ouvertuere_compte> <C-consulter_compte> <V-virement> <A-affichage des comptes>\n")
+    while bouton !='q' :
+        if bouton == 'O':
+            out= ''
+            while out != 'q' :
+                cc=input("donnez le CIN: ")
+                nn=input("donnez le NOM: ")
+                pp=input("donnez le Prenom: ")
+                tt=int(input("donnez le numero de telephone: "))
+                premier_depot= int(input("versez une première somme : \n"))
+                client_1 = Client(cc,nn,pp,tt)
+                compte_creer = Compte(premier_depot,client_1)
+                liste_des_comptes.append(compte_creer)
+                base_des_comptes={k:v for k,v in enumerate(liste_des_comptes)} #utilisation de dictionnaire comprehension
+                out=input("voulez vous ouvrir un autre compte ? <q-quitter|autre-continuer> ")
+        elif bouton == 'C':
+            quitter= ''
+            while quitter !='q':
+                rechCompte = input("Donnez le nom du proprietaire de compte ")
+                for elts in liste_des_comptes:
+                    elts.rechercher_compte_par_nom(rechCompte)
+                    break
+                quitter=input("voulez vous continuer ou quitter <autre-continuer> <q-quitter> ")
+        elif bouton == 'V':
+            sortir =''
+            while sortir !='q' :
+                vir = input("Vous avez optez pour un virement alors donner le numero de compte a debité : ")
+                sme = int(input("donnez la somme a debité: "))
+                cmpte_credite_num = input("Donnez le numero de compte a credite : ")
+                vari=Client("EEE1234","nom","prenom",23456987)
+                cmpte_credite = Compte(0,vari)
+                temps_compte = Compte(0,vari)
+                for e  in liste_des_comptes :
+                    tmps_compte = e.rechercher_compte_par_numeroCompte(vir) #compte debité
+                    cmpte_credite = e.rechercher_compte_par_numeroCompte(cmpte_credite_num) #compte credité
+                    cmpte_credite.virement_entre_compte(sme,temps_compte) #virement
+                    break
+                sortir = input(" voulez vous faire un autre virement ? <q-quitter><autre-continuer> : ")
+        elif bouton == 'Q':
+            pass
+        elif bouton == 'A':
+            print("Affichage de tous les comptes : \n")
+            for k,v in base_des_comptes.items() :
+                print("compte numero {} : \n".format(k))
+                print(v)
+        else:
+            print(" aurevoir")
+        bouton = input("choisissez une option <O-ouvertuere_compte> <A-affichage des comptes><C-consulter_compte> <V-virement><q-quitter>\n")
