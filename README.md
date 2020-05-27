@@ -1,7 +1,9 @@
 # Maitriser_python
 ## le debut avec quelques exercices de debutant
-### le projet compte bancaire 
-Objectif :  
+le projet compte bancaire:
+========================= 
+Objectif : 
+========= 
 
     Définir les propriétés et méthodes d’une classe
     Définir des constructeurs
@@ -11,6 +13,7 @@ Objectif :
     Définir des attributs et méthodes statiques
 
 Travail à faire:
+===============
 
     Définir une classe Client avec les attributs suivants : CIN, Nom, Prénom, Tél.
     Définir à l’aide des propriétés les méthodes d’accès aux différents attributs de la classe.
@@ -28,7 +31,8 @@ Travail à faire:
         Une méthode qui permet d’afficher le résumé d’un compte.
         Une méthode qui permet d’afficher le nombre des comptes crées.
     Créer un programme de test pour la classe Compte.
-### le projet Cercle en python
+le projet Cercle en python:
+==========================
 Objectif : 
 =========
 
@@ -54,7 +58,7 @@ Dans ce problème, nous allons commencer tout d’abord par définir la classe P
     Un constructeur qui permet de définir les valeurs de x et de y.
     Une méthode Afficher () qui affiche une chaîne de caractères POINT(x,y).
 
-Les opérations que l’on souhaite exécuter sur un cercle sont :
+### Les opérations que l’on souhaite exécuter sur un cercle sont :
 
     getPerimetre(): retourne le périmètre du cercle.
     getSurface(): retourne la surface du cercle.
