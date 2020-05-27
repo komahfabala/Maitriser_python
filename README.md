@@ -73,4 +73,39 @@ Dans ce problème, nous allons commencer tout d’abord par définir la classe P
     getSurface(): retourne la surface du cercle.
     appartient (Point p): retourne si le point p appartient ou non au cercle.
     Afficher (): Affiche une chaîne de caractères de type CERCLE(x,y,R)
-    //Source : www.exelib.net
+Le projet article en python:
+===========================
+Objectif :
+=========  
+
+    Définir les propriétés et méthodes d’une classe
+    Définir des propriétés statiques
+    Définir des constructeurs
+    Créer une instance de classe
+    Accéder par les accesseurs aux propriétés en lecture et écriture d’un objet
+    Appliquer des méthodes
+
+Travail à faire:
+===============
+
+    Créer la classe Article caractérisée par les attributs : Référence, Désignation, PrixHT, TauxTVA.
+
+      Ces attributs doivent seulement être accessibles par le biais des accesseurs (get / set) en lecture/écriture mis en œuvre par les propriétés.
+
+    Ajouter les constructeurs suivants :
+
+    Un constructeur par défaut
+    Un constructeur initialisant tous les attributs.
+    Un Constructeur qui permet de renseigner la référence et la désignation lors de l’instanciation
+    Un constructeur de recopie
+
+    Implémentez la méthode CalculerPrixTTC() ;
+
+        Cette méthode doit calculer le prix TTC d’un article qui équivaut à : PrixHT + (PrixHT*TauxTVA/100) et retournera la     valeur calculée.
+
+    Ajouter la méthode AfficherArticle() qui affiche les informations de l’article.
+
+    Créer un programme de test où il faut créer des objets (en utilisant les différents constructeurs) et leur calculer le prix TTC.
+
+    Le taux de TVA est en fait commun à tous les articles. Pour éviter toute redondance de cet attribut, vous devriez donc la déclarer comme partagéeau niveau de la classe Article et non comme un attribut spécifique des objets instanciés à partir de la classe. Proposer une solution et tester de nouveau.
+
