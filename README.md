@@ -54,7 +54,7 @@ Objectif :
 Travail à faire:
 ===============
 
-Un cercle est défini par :
+### Un cercle est défini par :
 
     Un point qui représente son centre 
     Son rayon r
