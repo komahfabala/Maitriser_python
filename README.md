@@ -1,7 +1,13 @@
 # Maitriser_python
 ## le debut avec quelques exercices de debutant
-le projet compte bancaire:
-========================= 
+>#### calcule de la moyenne a partir d'un fichier
+>#### nombre***mystere
+>#### trier des listes sans utiliser la fonction sort() de python
+>#### calcule des surface de rectangle , triangle 
+>#### produire des nombres aleatoires
+>#### parcourir un chaine de caractere
+le projet compte bancaire en python:
+=================================== 
 Objectif : 
 ========= 
 
