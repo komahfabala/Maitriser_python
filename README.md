@@ -5,7 +5,7 @@
 >#### trier des listes sans utiliser la fonction sort() de python
 >#### calcule des surface de rectangle , triangle 
 >#### produire des nombres aleatoires
->#### parcourir un chaine de caractere
+>#### parcourir une chaine de caractere
 le projet compte bancaire en python:
 =================================== 
 Objectif : 
