@@ -1,5 +1,46 @@
 import time
 from datetime import date
+class Personne(object):
+    """
+        definit une classe personne avec les attributs :
+        -nom
+        -prenom
+        -date de naissance
+    """
+    #--------------------constructeur----------------------------------------------------------------------
+    def __init__(self,personne_nom,personne_prenom,personne_date_Naissance):
+        """
+            constructeur de la classe personne
+        """
+        self.__personne_nom = personne_nom
+        self.__personne_prenom = personne_prenom
+        self.__personne_date_Naissance = personne_date_Naissance
+    #------------------accesseur et getter-----------------------------------------------------------------
+    #surcharge de fonction
+    @property
+    def name(self):
+        return self.__personne_nom
+    @name.setter
+    def name(self,value) :
+        self.__personne_nom = value
+    @name.deleter
+    def name(self,value) :
+        print("suppression........")
+        del self.__personne_nom
+    #-------------------affichage--------------------------------------------------------------------------
+    def __str__(self) :
+        msg = "Information sur la personne: \n nom: {}\n prenom: {}\n date de naissance: {}\n"
+        return msg.format(self.__personne_nom,self.__personne_prenom,self.__personne_date_Naissance)
+class Employer(Personne) :
+    """
+        definit un enploer de la banque un attribut salaire
+    """
+    #----------------constructeur-------------------------------------------------------------------------
+    def __init__(self,salaire,employer_nom,employer_prenom,employer_dateNaissance) :
+        #appelle du constructeur de la classe personne
+        super().__init__(employer_nom,employer_prenom,employer_dateNaissance)
+        self.__salaire = salaire
+
 class Client(object) :
     """
         defint une classe client avec les attributs :
@@ -145,7 +186,7 @@ if __name__ == "__main__":
     liste_des_comptes = [] #un dictionnaire pour stocker tous les comptes definitivement
     print("Bienvenue a la banque de Fabala \n")
     print("Que voulez-vous faire ? \n")
-    bouton = input("choisissez une option <O-ouvertuere_compte> <C-consulter_compte> <V-virement> <A-affichage des comptes>\n")
+    bouton = input("choisissez une option:<O-ouvertuere_compte><D-prelever-surCompte><C-consulter_compte><V-virement> <A-affichage des comptes>\n")
     while bouton !='q' :
         if bouton == 'O':
             out= ''
@@ -183,8 +224,14 @@ if __name__ == "__main__":
                     cmpte_credite.virement_entre_compte(sme,temps_compte) #virement
                     break
                 sortir = input(" voulez vous faire un autre virement ? <q-quitter><autre-continuer> : ")
-        elif bouton == 'Q':
-            pass
+        elif bouton == 'D':
+            print("voulez-vous prelever sur un montant sur un compte : ")
+            ss= int(input("donnez la somme à prelever: "))
+            numCpte = input("donnez le numero de compte: ")
+            for e in liste_des_comptes :
+                cpte_adebiter = e.rechercher_compte_par_numeroCompte(numCpte) 
+                cpte_adebiter.debite_compte(ss)
+                break
         elif bouton == 'A':
             print("Affichage de tous les comptes : \n")
             for k,v in base_des_comptes.items() :
