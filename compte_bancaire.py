@@ -27,20 +27,71 @@ class Personne(object):
     def name(self,value) :
         print("suppression........")
         del self.__personne_nom
+    @property
+    def prenom(self) :
+        return self.__personne_prenom
+    @prenom.setter
+    def prenom(self,valeur) :
+        self.__personne_prenom = valeur
+    def getDateNaissance(self) :
+        return self.__personne_date_Naissance
     #-------------------affichage--------------------------------------------------------------------------
     def __str__(self) :
         msg = "Information sur la personne: \n nom: {}\n prenom: {}\n date de naissance: {}\n"
         return msg.format(self.__personne_nom,self.__personne_prenom,self.__personne_date_Naissance)
+        
+#------------------------------classe emplyer--------------------------------------------------------------
 class Employer(Personne) :
     """
         definit un enploer de la banque un attribut salaire
     """
     #----------------constructeur-------------------------------------------------------------------------
-    def __init__(self,salaire,employer_nom,employer_prenom,employer_dateNaissance) :
+    def __init__(self,salaire,personne_employer) :
         #appelle du constructeur de la classe personne
-        super().__init__(employer_nom,employer_prenom,employer_dateNaissance)
+        super().__init__(personne_employer.name(),personne_employer.prenom(),personne_employer.personne_date_Naissance)
         self.__salaire = salaire
-
+    #-----------------------------accesseur et mutateur --------------------------------------------------
+    def getSalaire(self) :
+        return self.__salaire
+    #--------------------------------affichage-----------------------------------------------------------
+    def __str__(self) :
+        msg = "Information sur l'employé: \n nom: {}\n prenom: {}\n date de naissance: {}\n salaire: {}\n"
+        return msg.format(self.name(),self.prenom(),self.getDateNaissance(),self.__salaire)
+#------------------------classe chef -----------------------------------------------------------------------
+class Chef_service(Employer):
+    """
+        definit une classe chef qui herite de la classe employer avec un attribut service
+    """
+    def __init__(self, service,chef) :
+        super().__init__(chef.getSalaire(),chef)
+        self.__service = service
+    #---------------------accesseur et mutateur ---------------------------------------------------
+    @property
+    def serv_chef(self):
+        return self.__service
+    @serv_chef.setter
+    def serv_chef(self,valeur) :
+        print("attention modificateur")
+        self.__service =valeur
+    @serv_chef.deleter
+    def serv_chef(self) :
+        print("suppression")
+        del self.__service
+#-----------------------------classe Directeur--------------------------------------------------------------
+class Directeur(Chef_service) :
+    """
+        definit une classe directeur qui herite de chef_service avec un attribut banque 
+    """
+    def __init__(self,nom_banque,employer_banque) :
+        super().__init__(employer_banque.serv_chef(),employer_banque)
+        self.__nom_banque = nom_banque
+    #-------------------accesseur et mutateur-------------------------------------------------------------
+    def getNon_banque(self) :
+        return self.__nom_banque
+    def setNon_banque(self,valeur):
+        self.__nom_banque = valeur
+    
+#------------------------------------classe client----------------------------------------------------------
 class Client(object) :
     """
         defint une classe client avec les attributs :
@@ -92,6 +143,7 @@ class Client(object) :
     def __str__(self) :
         msg = "client:\n CIN: {}\n nom: {}\n prenom: {}\n telephone : {}\n adresse-mail: {}\n"
         return msg.format(self.getCin(),self.getNon(),self.getPrenom(),self.getTel(), self.getMail())
+
 #---------------------classe compte -----------------------------------------------------------------
 class Compte(Client) :
     """
@@ -125,13 +177,13 @@ class Compte(Client) :
         """
         print("le compte a été credité")
         self.setSolde(self.getSolde() + valeur)
+
     #-------------------effectuer un virement--------------------------------------------------------
     def virement_entre_compte(self,valeure,compte_debite) :
         """
             credite un compte a partir d'un compte passé en parametre 
             et la somme a debite
         """
-        
         print(" la somme de {} a été debité sur le compte {}".format(valeure,compte_debite.getNumero_compte()))
         compte_debite.setSolde(compte_debite.getSolde() - valeure)
         print("virement en cours ........")
