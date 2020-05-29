@@ -226,7 +226,22 @@ class Compte(Client) :
     def rechercher_compte_par_numeroCompte(self,num) :
         if self.getNumero_compte == num:
             return self
-#-----------------------------------classe compte--------------------------------------------------------
+#-----------------------classe compte epargne------------------------------------------------------------
+class Epargne(Compte,Client) :
+    """
+    definit un compte epargne avec un attribut taux-d'interet et une methode calculinteret() qui permet de mettre 
+    à jour le solde en fonction du taux
+    Arguments:
+        Compte {[type]} -- [description]
+    """
+    def __init__(self,taux_interet,epargne_solde,proprietaire) :
+        super().__init__(epargne_solde,proprietaire)
+        self.__taux_interet = taux_interet
+    #----------------methode de calcul du taux d'interet------------------------------------------------------
+    def calcul_taux_interet(self) :
+        tauxIn = self.getSolde * int(self.__taux_interet * 24)
+        self.setSolde(self.getSolde() + tauxIn)
+#-----------------------------------classe compteur--------------------------------------------------------
 class Compteur(Compte) :
       compte_objet = 0
       def __init__(self) :

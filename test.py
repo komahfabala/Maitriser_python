@@ -1,3 +1,6 @@
+import sys 
+print(sys.version)
+
 a=1 ; b=1 ; x =a+b ; print(x) 
 nom = " komah "
 prenom = " Mohamed " 
