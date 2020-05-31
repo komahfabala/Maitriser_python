@@ -6,15 +6,17 @@ class Personne(object):
         -nom
         -prenom
         -date de naissance
+        -addressse
     """
     #--------------------constructeur----------------------------------------------------------------------
-    def __init__(self,personne_nom,personne_prenom,personne_date_Naissance):
+    def __init__(self,personne_nom,personne_prenom,personne_date_Naissance,addresse):
         """
             constructeur de la classe personne
         """
         self.__personne_nom = personne_nom
         self.__personne_prenom = personne_prenom
         self.__personne_date_Naissance = personne_date_Naissance
+        self.__addresse = addresse
     #------------------accesseur et getter-----------------------------------------------------------------
     #surcharge de fonction
     @property
@@ -35,35 +37,66 @@ class Personne(object):
         self.__personne_prenom = valeur
     def getDateNaissance(self) :
         return self.__personne_date_Naissance
+    def getAdd(self) :
+        return self.__addresse
     #-------------------affichage--------------------------------------------------------------------------
     def __str__(self) :
-        msg = "Information sur la personne: \n nom: {}\n prenom: {}\n date de naissance: {}\n"
-        return msg.format(self.__personne_nom,self.__personne_prenom,self.__personne_date_Naissance)
+        msg = "Information sur la personne: \n nom: {}\n prenom: {}\n date de naissance: {}\n addresse: \n"
+        return msg.format(self.__personne_nom,self.__personne_prenom,self.__personne_date_Naissance,self.__addresse)
         
 #------------------------------classe emplyer--------------------------------------------------------------
 class Employer(Personne) :
     """
-        definit un enploer de la banque un attribut salaire
+        definit un enploer de la banque un attribut 
+        -salaire 
+        -matricule
+        -date d'embauche
     """
     #----------------constructeur-------------------------------------------------------------------------
-    def __init__(self,salaire,personne_employer) :
+    def __init__(self,matricule,salaire,personne_employer,dateEmbauche) :
         #appelle du constructeur de la classe personne
-        super().__init__(personne_employer.name,personne_employer.prenom,personne_employer.getDateNaissance())
+        super().__init__(personne_employer.name,personne_employer.prenom,personne_employer.getDateNaissance(),personne_employer.getAdd())
         self.__salaire = salaire
+        self.__matricule = matricule
+        self.__dateembauche = dateEmbauche
     #-----------------------------accesseur et mutateur --------------------------------------------------
-    def getSalaire(self) :
+    @property
+    def salaire(self) :
         return self.__salaire
+    @salaire.setter
+    def salaire(self,valeur):
+        print(" attention modificaion salaire....")
+        self.__salaire =valeur
+    @salaire.deleter
+    def salaire(self) :
+        print("attention suppression.....")
+        del self.__salaire
+    @property
+    def matricule(self):
+        return self.__matricule
+    @matricule.deleter
+    def matricule(self):
+        del self.__matricule
+    @property
+    def date_embauche(self):
+        return self.__dateembauche
+    @date_embauche.setter
+    def date_embauche(self,valeur):
+        self.__dateembauche = valeur
+    @date_embauche.deleter
+    def date_embauche(self):
+        del self.__dateembauche
     #--------------------------------affichage-----------------------------------------------------------
     def __str__(self) :
-        msg = "Information sur l'employé: \n nom: {}\n prenom: {}\n date de naissance: {}\n salaire: {}\n"
-        return msg.format(self.name,self.prenom,self.getDateNaissance(),self.__salaire)
+        msg = "Information sur l'employé: \n matricule: \n nom: {}\n prenom: {}\n date de naissance: {}\n salaire: {}\n date_Embauche: \n"
+        return msg.format(self.matricule,self.name,self.prenom,self.getDateNaissance(),self.salaire,self.date_embauche)
 #------------------------classe chef -----------------------------------------------------------------------
 class Chef_service(Employer,Personne):
     """
         definit une classe chef qui herite de la classe employer avec un attribut service
     """
     def __init__(self, service,chef) :
-        super().__init__(chef.getSalaire(),chef)
+        super().__init__(chef.matricule,chef.getSalaire(),chef,chef.dateEmbauche)
         self.__service = service
     #---------------------accesseur et mutateur ---------------------------------------------------
     @property
@@ -83,13 +116,23 @@ class Directeur(Chef_service,Employer,Personne) :
         definit une classe directeur qui herite de chef_service avec un attribut banque 
     """
     def __init__(self,nom_banque,employer_banque) :
-        super().__init__(employer_banque.serv_chef(),employer_banque)
+        super().__init__(employer_banque.serv_chef,employer_banque)
         self.__nom_banque = nom_banque
     #-------------------accesseur et mutateur-------------------------------------------------------------
-    def getNon_banque(self) :
+    @property
+    def nom_banque(self) :
         return self.__nom_banque
-    def setNon_banque(self,valeur):
+    @nom_banque.setter
+    def nom_banque(self,valeur):
         self.__nom_banque = valeur
+    @nom_banque.deleter
+    def nom_banque(self) :
+        print("attention suppression nom banque")
+        del self.__nom_banque 
+    #-------------------affichage -------------------------------------------------------------------------
+    def __str__(self):
+        msg = "Information sur le directeur de la banque: \n nom: {}\n prenom: {}\n date de naissance: {}\n salaire: {}\n"
+        return msg.format(self.name,self.prenom,self.getDateNaissance(),self.salaire)
     
 #------------------------------------classe client----------------------------------------------------------
 class Client(object) :
