@@ -48,7 +48,7 @@ class Employer(Personne) :
     #----------------constructeur-------------------------------------------------------------------------
     def __init__(self,salaire,personne_employer) :
         #appelle du constructeur de la classe personne
-        super().__init__(personne_employer.name(),personne_employer.prenom(),personne_employer.personne_date_Naissance)
+        super().__init__(personne_employer.name,personne_employer.prenom,personne_employer.getDateNaissance())
         self.__salaire = salaire
     #-----------------------------accesseur et mutateur --------------------------------------------------
     def getSalaire(self) :
@@ -56,9 +56,9 @@ class Employer(Personne) :
     #--------------------------------affichage-----------------------------------------------------------
     def __str__(self) :
         msg = "Information sur l'employé: \n nom: {}\n prenom: {}\n date de naissance: {}\n salaire: {}\n"
-        return msg.format(self.name(),self.prenom(),self.getDateNaissance(),self.__salaire)
+        return msg.format(self.name,self.prenom,self.getDateNaissance(),self.__salaire)
 #------------------------classe chef -----------------------------------------------------------------------
-class Chef_service(Employer):
+class Chef_service(Employer,Personne):
     """
         definit une classe chef qui herite de la classe employer avec un attribut service
     """
@@ -78,7 +78,7 @@ class Chef_service(Employer):
         print("suppression")
         del self.__service
 #-----------------------------classe Directeur--------------------------------------------------------------
-class Directeur(Chef_service) :
+class Directeur(Chef_service,Employer,Personne) :
     """
         definit une classe directeur qui herite de chef_service avec un attribut banque 
     """
@@ -98,12 +98,13 @@ class Client(object) :
         -CIN
         -Nom
         -Prenom
+        -Date Naissance
         -Telephone
     """
     #-----------constructeur------------------------------------------------------------------------------
     def __init__(self,cin,nom,prenom,tel) :
         """
-            constructeur de la classe client
+            constructeur de la classe client 
         """
         self.__cin = cin #private attribut
         self.__nom = nom #private attribut
