@@ -10,3 +10,5 @@ with open("notes.txt", "r") as fichier1 , open("admisRecale.txt", "w") as fichie
 with open("admisRecale.txt", "r") as filin :
 	for lignes in filin:
 		print(" {} \n".format(lignes))
+
+print("bachir")
