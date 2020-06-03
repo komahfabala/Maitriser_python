@@ -96,7 +96,7 @@ class Chef_service(Employer,Personne):
         definit une classe chef qui herite de la classe employer avec un attribut service
     """
     def __init__(self, service,chef) :
-        super().__init__(chef.matricule,chef.getSalaire(),chef,chef.dateEmbauche)
+        super().__init__(chef.matricule,chef.salaire,chef,chef.dateEmbauche)
         self.__service = service
     #---------------------accesseur et mutateur ---------------------------------------------------
     @property
