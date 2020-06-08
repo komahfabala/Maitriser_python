@@ -49,6 +49,11 @@ arr_test = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
 
 for x in np.nditer(arr_test):
   print(x) 
+
+arr_enu = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+for idx, x in np.ndenumerate(arr_enu): #affiche l'indice de chaque element du tableau numpy
+  print(idx, x) 
 print("****************")
 arr7 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 for x in np.nditer(arr7[:, ::2]): # iterer avec un pas de 2 mais on ne peut pas faire d'operation sur l'element

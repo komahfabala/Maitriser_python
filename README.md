@@ -108,4 +108,9 @@ Travail à faire:
     Créer un programme de test où il faut créer des objets (en utilisant les différents constructeurs) et leur calculer le prix TTC.
 
     Le taux de TVA est en fait commun à tous les articles. Pour éviter toute redondance de cet attribut, vous devriez donc la déclarer comme partagéeau niveau de la classe Article et non comme un attribut spécifique des objets instanciés à partir de la classe. Proposer une solution et tester de nouveau.
-
+Debut Machine Learning:
+=======================
+    Les conceptes cités ci-dessous sont très importants dans la comprehension du machine learning:
+    1. Mean: la moyenne des valeurs
+    2. Median : la valeure au milieu
+    3. Mode : la valeur qui apparait de plus dans la donnée 
