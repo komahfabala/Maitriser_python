@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import stats
 import random
 
 liste_elmt = [list(i*j for i in range(5)) for j in range(5)]
@@ -68,3 +69,13 @@ nouv_arr = mon_arr.reshape(4,4) # il faut que le nombre de lignes soit divisible
 print(" changement de dimension en matrice 4x4 \n",nouv_arr) 
 nouv2_arr = mon_arr.reshape(2,2,4)
 print("changement de dimension en un tableau en 2Dimension : \n", nouv2_arr)
+# progression lineaire
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+print(r)
+print(p)
+print(slope)
+print(intercept)
