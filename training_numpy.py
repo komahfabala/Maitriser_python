@@ -74,8 +74,14 @@ x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
 y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
 
 slope, intercept, r, p, std_err = stats.linregress(x, y)
-
 print(r)
 print(p)
 print(slope)
 print(intercept)
+print("*************************************************************************** \n")
+print(" Utilisation de la methode strip() de python \n")
+chaine = ' marlon jour a la maison dans sa chambre '
+#ch=chaine.strip('m')
+ch1=chaine.rpartition(' m')
+#print(ch)
+print(ch1)
